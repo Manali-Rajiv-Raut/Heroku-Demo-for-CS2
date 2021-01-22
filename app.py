@@ -12,7 +12,6 @@ import pandas as pd
 import numpy as np
 import pickle
 import keras
-import tensorflow as tf
 from keras.models import Sequential
 from keras.layers import Dense
 from sklearn.preprocessing import LabelEncoder

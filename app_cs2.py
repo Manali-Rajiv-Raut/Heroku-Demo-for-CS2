@@ -8,7 +8,7 @@ from module_2_preprocessing import Data_Preprocessing
 from module_12_DF_creation import DataFrame_Creation
 
 import joblib
-import pandas as pd
+#import pandas as pd
 import numpy as np
 import pickle
 import keras

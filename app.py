@@ -17,7 +17,7 @@ from keras.models import Sequential
 from keras.layers import Dense
 from sklearn.preprocessing import LabelEncoder
 from keras import utils as np_utils
-from tensorflow.keras.layers import Dropout
+from keras.layers import Dropout
 from IPython.display import HTML 
 from flask import Flask, request, jsonify, render_template
 from flask_table import Table, Col

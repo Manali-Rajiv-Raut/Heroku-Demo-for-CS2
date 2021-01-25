@@ -30,4 +30,4 @@ joblib ==1.0.0
 nltk==3.5
 click>=5.1
 tensorflow-cpu==2.4.0
-flask-table==0.2.4
+flask-table==0.5.0

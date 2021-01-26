@@ -75,6 +75,7 @@ def html_results(df):
 
 
 @app.route('/predict',methods=['POST'])
+"""
 def predict():
     acbsa_model = acbsa_model_creation()
     sentiment_model = sentiment_model_creation()
@@ -96,7 +97,7 @@ def predict():
     #table.border = True
     return render_template('result.html', table=table)
     #return render_template('index.html', prediction_text='The rsult of ABSA is  {} '.format(result))
-
+"""
     
 
 if __name__ == "__main__":

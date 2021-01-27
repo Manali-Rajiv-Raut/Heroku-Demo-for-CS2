@@ -7,3 +7,4 @@ nltk==3.4.5
 tqdm==4.49.0
 tensorflow==1.13.1
 flask_table==0.5.0
+sklearn==0.23.0

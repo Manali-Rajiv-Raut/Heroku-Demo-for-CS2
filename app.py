@@ -80,8 +80,8 @@ def predict():
     result = dfc.create_result_dataframe(predicted_cat,predicted_polarity)
     html = result.to_html() 
     
-    #return render_template('index.html', prediction_text= Markup("<h1>Hi</h1>"))\
-    return render_template('result.html')
+    #return render_template('index.html', prediction_text= Markup(html))
+    return render_template('result.html',prediction_text= Markup(html))
     
 
 if __name__ == "__main__":

@@ -83,7 +83,7 @@ def predict():
     
     #return render_template('index.html', prediction_text= Markup(html))
     #return render_template('result.html',prediction_text= Markup(html))
-    return jsonify(**result.html ,prediction_text= Markup(html) )
+    return jsonify('result.html' ,prediction_text= Markup(html) )
     
 
 if __name__ == "__main__":

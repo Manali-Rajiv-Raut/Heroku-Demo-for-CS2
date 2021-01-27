@@ -17,6 +17,7 @@ from tensorflow.python.keras.layers import Dropout
 from flask import Flask, request, jsonify, render_template
 from flask_table import Table, Col
 from flask import Markup
+from flask import jsonify
 
 app = Flask(__name__)
 path_acbsa = "saved_model/acbsa_model.h5"
@@ -81,7 +82,8 @@ def predict():
     html = result.to_html() 
     
     #return render_template('index.html', prediction_text= Markup(html))
-    return render_template('result.html',prediction_text= Markup(html))
+    #return render_template('result.html',prediction_text= Markup(html))
+    return jsonify(**result.html ,prediction_text= Markup(html) )
     
 
 if __name__ == "__main__":

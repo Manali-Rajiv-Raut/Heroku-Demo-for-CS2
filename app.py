@@ -71,10 +71,15 @@ def predict():
     
     # store the given text in a variable
     text = request.form.get("text")
-    text2 = text.split('\n') or text2 = text.split('.') or text2 = text.split(',')
-    sentence = [ line for line in text2]
-    print(sentence)
     
+    if "\n" in text :
+        text2 = text.split("\n")
+    elif "." in text :
+        text2 = text.split(".")
+    elif "," in text :
+        text2 = text.split(',')
+    
+    sentence = [ line for line in text2]    
     sen_tokenized = pd.DataFrame(tokenizer.texts_to_matrix(sentence))
     predicted_cat = label_encoder_acbsa.inverse_transform(np.argmax(acbsa_model.predict(sen_tokenized), axis=-1))       
     predicted_polarity =label_encoder_sentiment.inverse_transform(np.argmax(sentiment_model.predict(sen_tokenized), axis=-1))

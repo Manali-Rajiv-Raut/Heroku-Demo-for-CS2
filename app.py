@@ -72,7 +72,9 @@ def predict():
     
     # store the given text in a variable
     text = request.form.get("text")
-    text2 = text.split(',')
+    text.replace("," , "\n")
+    text.replace("." , "\n")
+    text2 = text.split('\n')
     #sentence = [ line for line in text2]    
     sen_tokenized = pd.DataFrame(tokenizer.texts_to_matrix(text2))
     predicted_cat = label_encoder_acbsa.inverse_transform(np.argmax(acbsa_model.predict(sen_tokenized), axis=-1))       

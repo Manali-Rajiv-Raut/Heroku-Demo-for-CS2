@@ -75,11 +75,11 @@ def predict():
     #text2 = text.split('\n')
     text2 = []
     if "." in text :
-        text2 = text.split(".")
+        text2.append(text.split("."))
     elif "," in text :
-        text2 = text.split(',')
+        text2.append(text.split(','))
     elif "\n" in text :
-        text2 = text.split("\n")
+        text2.append(text.split("\n"))
     
     #sentence = [ line for line in text2]    
     sen_tokenized = pd.DataFrame(tokenizer.texts_to_matrix(text2))

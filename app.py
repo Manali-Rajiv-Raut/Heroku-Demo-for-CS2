@@ -82,7 +82,7 @@ def predict():
         text2 = text.split("\n")
     
     sentence = [ line for line in text2]    
-    sen_tokenized = pd.DataFrame(tokenizer.texts_to_matrix(text2))
+    sen_tokenized = pd.DataFrame(tokenizer.texts_to_matrix(sentence))
     predicted_cat = label_encoder_acbsa.inverse_transform(np.argmax(acbsa_model.predict(sen_tokenized), axis=-1))       
     predicted_polarity =label_encoder_sentiment.inverse_transform(np.argmax(sentiment_model.predict(sen_tokenized), axis=-1))
     result = dfc.create_result_dataframe(predicted_cat,predicted_polarity)

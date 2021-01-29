@@ -74,9 +74,9 @@ def predict():
     
     if "\n" in text :
         text2 = text.split("\n")
-    elif "." in text :
+    if "." in text :
         text2 = text.split(".")
-    elif "," in text :
+    if "," in text :
         text2 = text.split(',')
     
     sentence = [ line for line in text2]    

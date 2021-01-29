@@ -71,7 +71,7 @@ def predict():
     
     # store the given text in a variable
     text = request.form.get("text")
-    text2 = re.split('. |, |\n ',text)
+    text2 = re.split(". |, |'|\n",text)
     sentence = [ line for line in text2]
     print(sentence)
     

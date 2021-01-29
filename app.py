@@ -17,6 +17,7 @@ from tensorflow.python.keras.layers import Dropout
 from flask import Flask, request, jsonify, render_template
 from flask_table import Table, Col
 from flask import Markup
+import re
 
 app = Flask(__name__)
 path_acbsa = "saved_model/acbsa_model.h5"
@@ -70,7 +71,7 @@ def predict():
     
     # store the given text in a variable
     text = request.form.get("text")
-    text2 = text.split(',|.|\n')
+    text2 = re.split('.|,|\n',text)
     sentence = [ line for line in text2]
     print(sentence)
     

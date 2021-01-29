@@ -72,8 +72,8 @@ def predict():
     
     # store the given text in a variable
     text = request.form.get("text")
-    text.replace("," , "\n")
-    text.replace("." , "\n")
+    text = text.replace("," , "\n")
+    text = text.replace("." , "\n")
     text2 = text.split('\n')
     #sentence = [ line for line in text2]    
     sen_tokenized = pd.DataFrame(tokenizer.texts_to_matrix(text2))

@@ -46,7 +46,6 @@ acbsa_model.add((Dense(256, activation='relu')))
 acbsa_model.add((Dropout(0.3)))
 acbsa_model.add((Dense(128, activation='relu')))
 acbsa_model.add(Dense(5, activation='softmax'))
-acbsa_model.load_weights(path_acbsa)
 
 # sentiment analysis
 sentiment_model = Sequential(name="sentiment")
@@ -55,7 +54,7 @@ sentiment_model.add((Dense(256, activation='relu')))
 sentiment_model.add((Dropout(0.3)))
 sentiment_model.add((Dense(128, activation='relu')))
 sentiment_model.add(Dense(4, activation='softmax'))
-sentiment_model.load_weights(path_sentiment)
+
 
 #loading the preprocessing class
 dp = Data_Preprocessing()
@@ -68,6 +67,8 @@ def home():
 
 @app.route('/predict',methods=['POST'])
 def predict():
+    acbsa_model.load_weights(path_acbsa)
+    sentiment_model.load_weights(path_sentiment)
     
     # store the given text in a variable
     text = request.form.get("text")
@@ -81,7 +82,7 @@ def predict():
         text2 = text.split(',')
     """
     sentence = [ line for line in text2]    
-    sen_tokenized = pd.DataFrame(tokenizer.texts_to_matrix(text))
+    sen_tokenized = pd.DataFrame(tokenizer.texts_to_matrix(text2))
     predicted_cat = label_encoder_acbsa.inverse_transform(np.argmax(acbsa_model.predict(sen_tokenized), axis=-1))       
     predicted_polarity =label_encoder_sentiment.inverse_transform(np.argmax(sentiment_model.predict(sen_tokenized), axis=-1))
     result = dfc.create_result_dataframe(predicted_cat,predicted_polarity)

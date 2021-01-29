@@ -73,7 +73,7 @@ def predict():
     # store the given text in a variable
     text = request.form.get("text")
     #text2 = text.split('\n')
-    
+    text2 = []
     if "." in text :
         text2 = text.split(".")
     elif "," in text :

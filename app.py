@@ -11,6 +11,7 @@ from module_12_DF_creation import DataFrame_Creation
 import pandas as pd
 import numpy as np
 import pickle
+import nltk
 from tensorflow.keras import Sequential
 from tensorflow.python.keras.layers import Dense
 from tensorflow.python.keras.layers import Dropout
@@ -72,11 +73,8 @@ def predict():
     
     # store the given text in a variable
     text = request.form.get("text")
-    text = text.replace(", " , "\n")
-    text = text.replace(". " , "\n")
-    text2 = text.split('\n')
-    #sentence = [ line for line in text2]    
-    sen_tokenized = pd.DataFrame(tokenizer.texts_to_matrix(text2))
+    sentence = nltk.tokenize.sent_tokenize(text)   
+    sen_tokenized = pd.DataFrame(tokenizer.texts_to_matrix(sentence))
     predicted_cat = label_encoder_acbsa.inverse_transform(np.argmax(acbsa_model.predict(sen_tokenized), axis=-1))       
     predicted_polarity =label_encoder_sentiment.inverse_transform(np.argmax(sentiment_model.predict(sen_tokenized), axis=-1))
     result = dfc.create_result_dataframe(predicted_cat,predicted_polarity)

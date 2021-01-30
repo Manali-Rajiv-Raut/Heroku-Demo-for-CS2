@@ -12,6 +12,7 @@ import pandas as pd
 import numpy as np
 import pickle
 import nltk
+nltk.download('punkt')
 from tensorflow.keras import Sequential
 from tensorflow.python.keras.layers import Dense
 from tensorflow.python.keras.layers import Dropout
